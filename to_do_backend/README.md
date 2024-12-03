@@ -112,6 +112,147 @@ flask run
 
 # 4. Rutas de la API
 
+sta API permite realizar operaciones básicas para la gestión de tareas, como crear, listar, actualizar y eliminar tareas.
+
+---
+
+## **Rutas de la API**
+
+### **1. Inicio**
+- **URL:** `/`
+- **Método:** `GET`
+- **Descripción:** Retorna un mensaje de bienvenida a la API.
+- **Respuesta:**
+  ```json
+  {
+    "mensaje": "Bienvenido a la API de tareas"
+  }
+  ```
+
+---
+
+### **2. Crear una tarea**
+- **URL:** `/guardar`
+- **Método:** `POST`
+- **Descripción:** Guarda una nueva tarea en la base de datos.
+- **Cuerpo de la solicitud (JSON):**
+  ```json
+  {
+    "titulo": "Nombre de la tarea",
+    "descripcion": "Descripción de la tarea"
+  }
+  ```
+- **Respuesta:**
+  - **Éxito:**
+    ```json
+    {
+      "mensaje": "Tarea almacenada correctamente"
+    }
+    ```
+  - **Error:**
+    ```json
+    {
+      "mensaje": "Error al almacenar la tarea"
+    }
+    ```
+
+---
+
+### **3. Obtener todas las tareas**
+- **URL:** `/tareas`
+- **Método:** `GET`
+- **Descripción:** Devuelve todas las tareas almacenadas en la base de datos.
+- **Respuesta:**
+  ```json
+  {
+    "tareas": [
+      {
+        "id": 1,
+        "titulo": "Nombre de la tarea",
+        "descripcion": "Descripción de la tarea",
+        "completado": false
+      }
+    ]
+  }
+  ```
+
+---
+
+### **4. Eliminar una tarea**
+- **URL:** `/tareas/<id>`
+- **Método:** `DELETE`
+- **Descripción:** Elimina una tarea específica por su ID.
+- **Parámetro de la URL:**
+  - `id` (entero): ID de la tarea que se desea eliminar.
+- **Respuesta:**
+  - **Éxito:**
+    ```json
+    {
+      "mensaje": "Tarea eliminada correctamente"
+    }
+    ```
+  - **Error:**
+    ```json
+    {
+      "mensaje": "Error al eliminar la tarea"
+    }
+    ```
+
+---
+
+### **5. Marcar una tarea como finalizada**
+- **URL:** `/tareas/<id>`
+- **Método:** `PUT`
+- **Descripción:** Marca una tarea como finalizada por su ID.
+- **Parámetro de la URL:**
+  - `id` (entero): ID de la tarea que se desea finalizar.
+- **Respuesta:**
+  - **Éxito:**
+    ```json
+    {
+      "mensaje": "Tarea finalizada correctamente"
+    }
+    ```
+  - **Error:**
+    ```json
+    {
+      "mensaje": "Error al finalizar la tarea"
+    }
+    ```
+
+---
+
+### **6. Eliminar todas las tareas finalizadas**
+- **URL:** `/tareas/eliminar-todas/finalizadas`
+- **Método:** `DELETE`
+- **Descripción:** Elimina múltiples tareas finalizadas según los IDs proporcionados.
+- **Cuerpo de la solicitud (JSON):**
+  ```json
+  {
+    "tareasIds": [1, 2, 3]
+  }
+  ```
+- **Respuesta:**
+  - **Éxito:**
+    ```json
+    {
+      "mensaje": "Tareas eliminadas correctamente"
+    }
+    ```
+  - **Error:**
+    ```json
+    {
+      "mensaje": "Error al eliminar las tareas"
+    }
+    ```
+
+---
+
+## **Autor**
+Desarrollado por [Tu Nombre].  
+Para más información, contacta en: [Tu Correo].
+
+
 ---
 
 # 5. Autor
