@@ -112,7 +112,11 @@ flask run
 
 # 4. Rutas de la API
 
-sta API permite realizar operaciones básicas para la gestión de tareas, como crear, listar, actualizar y eliminar tareas.
+Esta API permite realizar operaciones básicas para la gestión de tareas a realizar:
+- crear
+- listar
+- actualizar
+- eliminar
 
 ---
 
@@ -248,14 +252,7 @@ sta API permite realizar operaciones básicas para la gestión de tareas, como c
 
 ---
 
-## **Autor**
-Desarrollado por [Tu Nombre].  
-Para más información, contacta en: [Tu Correo].
-
-
----
-
 # 5. Autor
 
 Creado por John Ortiz Ordoñez - johnortizo@outlook.com
-**Repositorio en GitHub:** [Enlace al repositorio](https://github.com/usuario/proyecto6-todo)
+**Repositorio en GitHub:** [Enlace al repositorio](https://github.com/Fhernd/proyecto8_to_do)
