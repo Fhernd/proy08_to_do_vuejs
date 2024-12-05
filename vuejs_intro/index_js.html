@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        #app {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Contenedor para la aplicación -->
+    <div id="app">
+        <h1>Vanilla JS Counter App</h1>
+        <p id="counter">Counter: 0</p>
+        <button id="increment">Increment</button>
+        <button id="decrement" disabled>Decrement</button>
+    </div>
+
+    <script>
+        // Variables para manejar el estado del contador y los elementos del DOM
+        let counter = 0;
+        const counterDisplay = document.getElementById('counter');
+        const incrementButton = document.getElementById('increment');
+        const decrementButton = document.getElementById('decrement');
+
+        // Función para actualizar la interfaz del contador
+        function updateCounter() {
+            counterDisplay.textContent = `Counter: ${counter}`;
+            decrementButton.disabled = counter === 0; // Deshabilitar botón si el contador es 0
+        }
+
+        // Agregar eventos a los botones
+        incrementButton.addEventListener('click', () => {
+            counter++;
+            updateCounter();
+        });
+
+        decrementButton.addEventListener('click', () => {
+            if (counter > 0) {
+                counter--;
+                updateCounter();
+            }
+        });
+
+        // Actualizar la interfaz al inicio
+        updateCounter();
+    </script>
+</body>
+
+</html>
