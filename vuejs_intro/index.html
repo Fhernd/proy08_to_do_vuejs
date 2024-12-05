@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 App with CDN</title>
+    <!-- CDN de VueJS versión 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        #app {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Contenedor para la aplicación Vue -->
+    <div id="app">
+        <h1>Vue 3 Counter App</h1>
+        <p>Counter: {{ counter }}</p>
+        <button @click="increment">Increment</button>
+        <button @click="decrement" :disabled="counter === 0">Decrement</button>
+    </div>
+
+    <script>
+        // Inicialización de la aplicación Vue
+        const app = Vue.createApp({
+            data() {
+                return {
+                    counter: 0, // Estado inicial del contador
+                };
+            },
+            methods: {
+                increment() {
+                    this.counter++;
+                },
+                decrement() {
+                    if (this.counter > 0) {
+                        this.counter--;
+                    }
+                },
+            },
+        });
+
+        // Montamos la aplicación en el elemento con id "app"
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
