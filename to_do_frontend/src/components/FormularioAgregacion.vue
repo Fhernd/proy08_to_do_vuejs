@@ -6,21 +6,13 @@
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            contenidoTarea: '',
-            tareas: []
-        };
-    },
-    methods: {
-        agregarTarea() {
-            if (this.contenidoTarea.trim() !== '') {
-                this.tareas.push({ name: this.contenidoTarea, status: 'pending' });
-                this.contenidoTarea = '';
-            }
-        }
-    }
+import { ref } from 'vue';
+
+const contenidoTarea = ref('');
+
+const agregarTarea = () => {
+    console.log('Agregar tarea', contenidoTarea.value);
+    contenidoTarea.value = '';
 };
 </script>
 
