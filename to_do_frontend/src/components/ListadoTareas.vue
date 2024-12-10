@@ -7,6 +7,8 @@
 </template>
 
 <script setup>
+import Tarea from './Tarea.vue';
+
 defineProps({
     tareas: {
         type: Array,
