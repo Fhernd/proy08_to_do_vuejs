@@ -5,9 +5,6 @@ import CategoriasTareas from './components/CategoriasTareas.vue';
 
 import tareas from './data/tareas';
 
-console.log('Tareas', tareas);
-
-
 </script>
 
 <template>

@@ -10,9 +10,23 @@ import { ref } from 'vue';
 
 const contenidoTarea = ref('');
 
+const generarId = () => {
+    return Math.random().toString(36).substr(2, 12);
+};
+
 const agregarTarea = () => {
     console.log('Agregar tarea', contenidoTarea.value);
+
+    const tarea = {
+        id: generarId(),
+        texto: contenidoTarea.value,
+        completada: false,
+        fechaHora: new Date().toISOString()
+    }
+
     contenidoTarea.value = '';
+
+    console.log('Tarea generada', tarea);
 };
 </script>
 
