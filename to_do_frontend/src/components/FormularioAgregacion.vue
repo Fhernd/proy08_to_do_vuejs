@@ -9,6 +9,7 @@
 import { ref } from 'vue';
 
 const contenidoTarea = ref('');
+const emit = defineEmits(['tarea-agregada']);
 
 const generarId = () => {
     return Math.random().toString(36).substr(2, 12);
@@ -26,7 +27,7 @@ const agregarTarea = () => {
 
     contenidoTarea.value = '';
 
-    console.log('Tarea generada', tarea);
+    emit('tarea-agregada', tarea);
 };
 </script>
 
