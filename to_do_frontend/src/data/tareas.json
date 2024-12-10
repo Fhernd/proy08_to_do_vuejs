@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1a2b3c",
+    "texto": "Comprar leche",
+    "completada": false,
+    "fechaHora": "2023-10-01T08:30:00Z"
+  },
+  {
+    "id": "4d5e6f",
+    "texto": "Llamar al doctor",
+    "completada": true,
+    "fechaHora": "2023-10-02T09:00:00Z"
+  },
+  {
+    "id": "7g8h9i",
+    "texto": "Enviar correo",
+    "completada": false,
+    "fechaHora": "2023-10-03T10:15:00Z"
+  },
+  {
+    "id": "0j1k2l",
+    "texto": "Reunión con el equipo",
+    "completada": true,
+    "fechaHora": "2023-10-04T11:45:00Z"
+  },
+  {
+    "id": "3m4n5o",
+    "texto": "Hacer ejercicio",
+    "completada": false,
+    "fechaHora": "2023-10-05T07:00:00Z"
+  }
+]

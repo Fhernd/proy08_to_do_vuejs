@@ -1,10 +1,16 @@
 <script setup>
-
+import ListadoTareas from './components/ListadoTareas.vue';
+import FormularioAgregacion from './components/FormularioAgregacion.vue';
+import CategoriasTareas from './components/CategoriasTareas.vue';
 </script>
 
 <template>
   <div>
-    
+    <!-- <img class="logo" src="./assets/logo.png" alt="Vue logo" /> -->
+    <h1>Lista de tareas</h1>
+    <FormularioAgregacion />
+    <CategoriasTareas />
+    <ListadoTareas :tareas="tareas" />
   </div>
 </template>
 
