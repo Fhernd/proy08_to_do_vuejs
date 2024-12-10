@@ -5,9 +5,6 @@
 </template>
 
 <script setup>
-
-import { ref } from 'vue'
-
 const filtrarTareas = (filtro) => {
     console.log('Filtrar tareas', filtro)
 }
