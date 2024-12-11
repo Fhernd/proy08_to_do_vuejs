@@ -1,12 +1,16 @@
 <script setup>
+import { ref } from 'vue';
+
 import ListadoTareas from './components/ListadoTareas.vue';
 import FormularioAgregacion from './components/FormularioAgregacion.vue';
 import CategoriasTareas from './components/CategoriasTareas.vue';
 
-import tareas from './data/tareas';
+import tareasData from './data/tareas';
+
+const tareas = ref(tareasData);
 
 const manejarTareaAgregada = (tarea) => {
-  tareas.push(tarea);
+  tareas.value.push(tarea);
 };
 
 </script>
@@ -28,9 +32,11 @@ const manejarTareaAgregada = (tarea) => {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
