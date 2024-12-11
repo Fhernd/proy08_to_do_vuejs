@@ -5,13 +5,17 @@ import CategoriasTareas from './components/CategoriasTareas.vue';
 
 import tareas from './data/tareas';
 
+const manejarTareaAgregada = (tarea) => {
+  tareas.push(tarea);
+};
+
 </script>
 
 <template>
   <div>
     <!-- <img class="logo" src="./assets/logo.png" alt="Vue logo" /> -->
     <h1>Lista de tareas</h1>
-    <FormularioAgregacion />
+    <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
     <CategoriasTareas />
     <ListadoTareas :tareas="tareas" />
   </div>

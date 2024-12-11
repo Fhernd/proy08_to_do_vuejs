@@ -16,8 +16,6 @@ const generarId = () => {
 };
 
 const agregarTarea = () => {
-    console.log('Agregar tarea', contenidoTarea.value);
-
     const tarea = {
         id: generarId(),
         texto: contenidoTarea.value,
@@ -26,7 +24,6 @@ const agregarTarea = () => {
     }
 
     contenidoTarea.value = '';
-
     emit('tarea-agregada', tarea);
 };
 </script>
