@@ -10,6 +10,7 @@
 
 <script setup>
 import { defineProps } from 'vue'
+const emit = defineEmits(['tarea-eliminar']);
 
 const props = defineProps({
     tarea: {
@@ -24,8 +25,8 @@ const completarTarea = () => {
 
 const eliminarTarea = () => {
     console.log('Eliminar tarea')
+    emit('tarea-eliminar', props.tarea.id);
 }
-
 </script>
 
 <style scoped></style>
