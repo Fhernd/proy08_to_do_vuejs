@@ -8,8 +8,9 @@
 
 <script setup>
 import Tarea from './Tarea.vue';
+const emit = defineEmits(['tarea-eliminar']);
 
-defineProps({
+const props = defineProps({
     tareas: {
         type: Array,
         required: true
@@ -17,7 +18,7 @@ defineProps({
 })
 
 const eliminarTarea = (id) => {
-    console.log('Eliminar tarea', id)
+    emit('tarea-eliminar', id);
 }
 </script>
 

@@ -13,6 +13,9 @@ const manejarTareaAgregada = (tarea) => {
   tareas.value.push(tarea);
 };
 
+const eliminarTarea = (id) => {
+  tareas.value = tareas.value.filter((tarea) => tarea.id !== id);
+};
 </script>
 
 <template>
@@ -21,7 +24,7 @@ const manejarTareaAgregada = (tarea) => {
     <h1>Lista de tareas</h1>
     <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
     <CategoriasTareas />
-    <ListadoTareas :tareas="tareas" />
+    <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" />
   </div>
 </template>
 

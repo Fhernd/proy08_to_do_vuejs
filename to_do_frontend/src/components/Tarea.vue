@@ -24,7 +24,6 @@ const completarTarea = () => {
 }
 
 const eliminarTarea = () => {
-    console.log('Eliminar tarea')
     emit('tarea-eliminar', props.tarea.id);
 }
 </script>
