@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="tarea in tareas" :key="tarea.id">
-            <Tarea :tarea="tarea" />
+            <Tarea :tarea="tarea" @tarea-eliminar="eliminarTarea" />
         </div>
     </div>
 </template>
@@ -16,7 +16,9 @@ defineProps({
     }
 })
 
+const eliminarTarea = (id) => {
+    console.log('Eliminar tarea', id)
+}
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
