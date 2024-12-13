@@ -5,8 +5,10 @@
 </template>
 
 <script setup>
+const emit = defineEmits(['tareas-filtrar']);
+
 const filtrarTareas = (filtro) => {
-    console.log('Filtrar tareas', filtro)
+    emit('tareas-filtrar', filtro);
 }
 </script>
 
