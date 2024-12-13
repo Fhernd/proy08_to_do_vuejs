@@ -16,6 +16,22 @@ const manejarTareaAgregada = (tarea) => {
 const eliminarTarea = (id) => {
   tareas.value = tareas.value.filter((tarea) => tarea.id !== id);
 };
+
+const filtrarTareas = (filtro) => {
+  switch (filtro) {
+    case 'todas':
+      tareas.value = tareasData;
+      break;
+    case 'pendientes':
+      tareas.value = tareasData.filter((tarea) => !tarea.completada);
+      break;
+    case 'completadas':
+      tareas.value = tareasData.filter((tarea) => tarea.completada);
+      break;
+    default:
+      tareas.value = tareasData;
+  }
+};
 </script>
 
 <template>
@@ -23,7 +39,7 @@ const eliminarTarea = (id) => {
     <!-- <img class="logo" src="./assets/logo.png" alt="Vue logo" /> -->
     <h1>Lista de tareas</h1>
     <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
-    <CategoriasTareas />
+    <CategoriasTareas @tareas-filtrar="filtrarTareas" />
     <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" />
   </div>
 </template>
