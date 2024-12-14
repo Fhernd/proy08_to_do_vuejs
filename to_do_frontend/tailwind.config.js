@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",          // Asegúrate de incluir el archivo HTML raíz.
-    "./src/**/*.{vue,js,ts}", // Incluye todos los archivos Vue, JS y TS en src.
+    './index.html',
+    './src/**/*.{vue,js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {}, // Aquí puedes personalizar colores, tamaños, etc.
+    extend: {},
   },
   plugins: [],
 }
