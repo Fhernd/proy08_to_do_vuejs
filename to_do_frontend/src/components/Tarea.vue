@@ -21,7 +21,6 @@
   </template>
 
 <script setup>
-import { defineProps } from 'vue'
 const emit = defineEmits(['tarea-eliminar']);
 
 const props = defineProps({

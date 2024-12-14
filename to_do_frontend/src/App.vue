@@ -36,8 +36,14 @@ const filtrarTareas = (filtro) => {
 
 <template>
   <div>
+    <div class="h-screen flex items-center justify-center bg-gray-100">
+      <h1 class="text-4xl font-bold text-blue-500">¡Hola, Tailwind con Vue!</h1>
+    </div>
     <div class="text-center">
-      <h1 class="text-4xl font-bold text-blue-600">¡Hola, Tailwind!</h1>
+      <h1 class="text-4xl font-bold text-red-600">¡Hola, Tailwind!</h1>
+    </div>
+    <div style="text-align: center;">
+      <h1 style="font-size: 2.25rem; font-weight: 700; color: #dc2626;">¡Hola, Tailwind!</h1>
     </div>
     <!-- <img class="logo" src="./assets/logo.png" alt="Vue logo" /> -->
     <h1>Lista de tareas</h1>
