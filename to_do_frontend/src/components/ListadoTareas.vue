@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="tarea in tareas" :key="tarea.id">
-            <Tarea :tarea="tarea" @tarea-eliminar="eliminarTarea" />
+            <Tarea :tarea="tarea" @tarea-eliminar="eliminarTarea" @tarea-toggle="completarTarea" />
         </div>
     </div>
 </template>
@@ -16,6 +16,14 @@ const props = defineProps({
         required: true
     }
 })
+
+const completarTarea = (id) => {
+//   const tarea = props.tareas.find((t) => t.id === id);
+//   if (tarea) {
+//     tarea.completada = !tarea.completada;
+//     emit('tarea-actualizada', props.tareas);
+//   }
+};
 
 const eliminarTarea = (id) => {
     emit('tarea-eliminar', id);
