@@ -36,7 +36,7 @@ const filtrarTareas = (filtro) => {
 
 <template>
   <div>
-    <h1>Lista de tareas</h1>
+    <h1 class="text-center text-blue-500 uppercase text-4xl">Lista de tareas</h1>
     <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
     <CategoriasTareas @tareas-filtrar="filtrarTareas" />
     <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" />
