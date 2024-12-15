@@ -18,11 +18,7 @@ const props = defineProps({
 })
 
 const completarTarea = (id) => {
-//   const tarea = props.tareas.find((t) => t.id === id);
-//   if (tarea) {
-//     tarea.completada = !tarea.completada;
-//     emit('tarea-actualizada', props.tareas);
-//   }
+    emit('tarea-actualizada', id);
 };
 
 const eliminarTarea = (id) => {

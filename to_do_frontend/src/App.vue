@@ -32,6 +32,15 @@ const filtrarTareas = (filtro) => {
       tareas.value = tareasData;
   }
 };
+
+const actualizarEstadoTarea = (id) => {
+  tareas.value = tareas.value.map((tarea) => {
+    if (tarea.id === id) {
+      tarea.completada = !tarea.completada;
+    }
+    return tarea;
+  });
+};
 </script>
 
 <template>
@@ -39,7 +48,7 @@ const filtrarTareas = (filtro) => {
     <h1 class="text-center text-blue-500 uppercase text-4xl">Lista de tareas</h1>
     <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
     <CategoriasTareas @tareas-filtrar="filtrarTareas" />
-    <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" />
+    <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" @tarea-actualizada="actualizarEstadoTarea" />
   </div>
 </template>
 
