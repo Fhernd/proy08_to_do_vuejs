@@ -8,6 +8,7 @@ import CategoriasTareas from './components/CategoriasTareas.vue';
 import tareasData from './data/tareas';
 
 const tareas = ref(tareasData);
+const categoriaActiva = ref('todas');
 
 const manejarTareaAgregada = (tarea) => {
   tareas.value.push(tarea);
@@ -47,7 +48,7 @@ const actualizarEstadoTarea = (id) => {
   <div>
     <h1 class="text-center text-blue-500 uppercase text-4xl">Lista de tareas</h1>
     <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
-    <CategoriasTareas @tareas-filtrar="filtrarTareas" />
+    <CategoriasTareas @tareas-filtrar="filtrarTareas" :filtroActivo="categoriaActiva" />
     <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" @tarea-actualizada="actualizarEstadoTarea" />
   </div>
 </template>
