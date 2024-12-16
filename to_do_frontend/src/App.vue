@@ -19,6 +19,7 @@ const eliminarTarea = (id) => {
 };
 
 const filtrarTareas = (filtro) => {
+  categoriaActiva.value = filtro;
   switch (filtro) {
     case 'todas':
       tareas.value = tareasData;

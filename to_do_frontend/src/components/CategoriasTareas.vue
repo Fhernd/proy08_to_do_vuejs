@@ -22,7 +22,7 @@
 
 <script setup>
 const emit = defineEmits(['tareas-filtrar']);
-defineProps({
+const props = defineProps({
     filtroActivo: {
         type: String,
         required: true
