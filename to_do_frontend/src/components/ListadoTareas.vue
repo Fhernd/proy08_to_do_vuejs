@@ -8,7 +8,7 @@
 
 <script setup>
 import Tarea from './Tarea.vue';
-const emit = defineEmits(['tarea-eliminar']);
+const emit = defineEmits(['tarea-eliminar', 'tarea-actualizada']);
 
 const props = defineProps({
     tareas: {
