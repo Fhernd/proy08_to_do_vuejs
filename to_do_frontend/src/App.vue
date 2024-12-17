@@ -1,3 +1,12 @@
+<template>
+  <div>
+    <h1 class="text-center text-blue-500 uppercase text-4xl">Lista de tareas</h1>
+    <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
+    <CategoriasTareas @tareas-filtrar="filtrarTareas" :filtroActivo="categoriaActiva" />
+    <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" @tarea-actualizada="actualizarEstadoTarea" />
+  </div>
+</template>
+
 <script setup>
 import { ref } from 'vue';
 
@@ -12,6 +21,7 @@ const categoriaActiva = ref('todas');
 
 const manejarTareaAgregada = (tarea) => {
   tareas.value.push(tarea);
+  aplicarFiltro();
 };
 
 const eliminarTarea = (id) => {
@@ -20,7 +30,21 @@ const eliminarTarea = (id) => {
 
 const filtrarTareas = (filtro) => {
   categoriaActiva.value = filtro;
-  switch (filtro) {
+  aplicarFiltro();
+};
+
+const actualizarEstadoTarea = (id) => {
+  tareas.value = tareas.value.map((tarea) => {
+    if (tarea.id === id) {
+      tarea.completada = !tarea.completada;
+    }
+    return tarea;
+  });
+  aplicarFiltro();
+};
+
+const aplicarFiltro = () => {
+  switch (categoriaActiva.value) {
     case 'todas':
       tareas.value = tareasData;
       break;
@@ -34,39 +58,4 @@ const filtrarTareas = (filtro) => {
       tareas.value = tareasData;
   }
 };
-
-const actualizarEstadoTarea = (id) => {
-  tareas.value = tareas.value.map((tarea) => {
-    if (tarea.id === id) {
-      tarea.completada = !tarea.completada;
-    }
-    return tarea;
-  });
-};
 </script>
-
-<template>
-  <div>
-    <h1 class="text-center text-blue-500 uppercase text-4xl">Lista de tareas</h1>
-    <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
-    <CategoriasTareas @tareas-filtrar="filtrarTareas" :filtroActivo="categoriaActiva" />
-    <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" @tarea-actualizada="actualizarEstadoTarea" />
-  </div>
-</template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
