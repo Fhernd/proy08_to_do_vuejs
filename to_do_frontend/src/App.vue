@@ -1,9 +1,14 @@
 <template>
-  <div>
-    <h1 class="text-center text-blue-500 uppercase text-4xl">Lista de tareas</h1>
-    <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
-    <CategoriasTareas @tareas-filtrar="filtrarTareas" :filtroActivo="categoriaActiva" />
-    <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" @tarea-actualizada="actualizarEstadoTarea" />
+  <div class="flex flex-col items-center min-h-screen">
+    <div class="w-full md:w-2/3 lg:w-1/2 text-center fixed top-0 bg-white z-10 shadow-md">
+      <h1 class="text-center text-blue-500 uppercase text-4xl mt-4">Lista de tareas</h1>
+      <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
+      <CategoriasTareas @tareas-filtrar="filtrarTareas" :filtroActivo="categoriaActiva" />
+    </div>
+
+    <div class="w-full md:w-2/3 lg:w-1/2 mt-32">
+      <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" @tarea-actualizada="actualizarEstadoTarea" />
+    </div>
   </div>
 </template>
 
