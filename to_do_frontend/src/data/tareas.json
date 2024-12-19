@@ -1,15 +1,15 @@
 [
   {
+    "id": "4d5e6f",
+    "texto": "Llamar al doctor",
+    "completada": false,
+    "fechaHora": "2023-10-02T09:00:00Z"
+  },
+  {
     "id": "1a2b3c",
     "texto": "Comprar leche",
     "completada": false,
     "fechaHora": "2023-10-01T08:30:00Z"
-  },
-  {
-    "id": "4d5e6f",
-    "texto": "Llamar al doctor",
-    "completada": true,
-    "fechaHora": "2023-10-02T09:00:00Z"
   },
   {
     "id": "7g8h9i",
@@ -28,5 +28,11 @@
     "texto": "Hacer ejercicio",
     "completada": false,
     "fechaHora": "2023-10-05T07:00:00Z"
+  },
+  {
+    "id": "6p7q8r",
+    "texto": "Comprar regalo",
+    "completada": false,
+    "fechaHora": "2023-10-06T12:30:00Z"
   }
 ]

@@ -6,7 +6,7 @@
       <CategoriasTareas @tareas-filtrar="filtrarTareas" :filtroActivo="categoriaActiva" />
     </div>
 
-    <div class="w-full md:w-2/3 lg:w-1/2 mt-32">
+    <div class="w-full md:w-2/3 lg:w-1/2 mt-52">
       <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" @tarea-actualizada="actualizarEstadoTarea" />
     </div>
   </div>
