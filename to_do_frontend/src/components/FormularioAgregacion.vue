@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-center mt-4">
+    <div class="flex items-center justify-center mt-4 ml-4 mr-4">
         <div class="relative w-full max-w-lg">
             <input type="text" placeholder="Ingresa una tarea y presiona Enter"
                 class="w-full px-4 py-2 pr-10 border rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
