@@ -1,7 +1,10 @@
 <template>
   <div class="flex flex-col items-center min-h-screen">
     <div class="w-full md:w-2/3 lg:w-1/2 text-center fixed top-0 bg-white z-10 shadow-md">
-      <h1 class="text-center text-blue-500 uppercase text-4xl mt-4">Lista de tareas</h1>
+      <h1
+        class="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 drop-shadow-md">
+        LISTA DE TAREAS
+      </h1>
       <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
       <CategoriasTareas @tareas-filtrar="filtrarTareas" :filtroActivo="categoriaActiva" />
     </div>
