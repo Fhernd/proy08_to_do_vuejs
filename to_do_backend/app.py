@@ -13,7 +13,13 @@ def index():
     }
 
 
-@app.route('/guardar', methods=['POST'])
+@app.route('/tareas', methods=['GET'])
+def todas():
+    tareas = obtener_tareas()
+    return {'tareas': [tarea.__dict__ for tarea in tareas]}
+
+
+@app.route('/tareas', methods=['POST'])
 def guardar():
     todo = request.json
     
@@ -23,22 +29,6 @@ def guardar():
         return {'mensaje': 'Tarea almacenada correctamente'}
     else:
         return {'mensaje': 'Error al almacenar la tarea'}
-
-
-@app.route('/tareas', methods=['GET'])
-def todas():
-    tareas = obtener_tareas()
-    return {'tareas': [tarea.__dict__ for tarea in tareas]}
-
-
-@app.route('/tareas/<id>', methods=['DELETE'])
-def eliminar(id):
-    resultado = eliminar_tarea(id)
-    
-    if resultado:
-        return {'mensaje': 'Tarea eliminada correctamente'}
-    else:
-        return {'mensaje': 'Error al eliminar la tarea'}
 
 
 @app.route('/tareas/<id>', methods=['PUT'])
@@ -51,7 +41,17 @@ def modificar(id):
         return {'mensaje': 'Error al finalizar la tarea'}
 
 
-@app.route('/tareas/eliminar-todas/finalizadas', methods=['DELETE'])
+@app.route('/tareas/<id>', methods=['DELETE'])
+def eliminar(id):
+    resultado = eliminar_tarea(id)
+    
+    if resultado:
+        return {'mensaje': 'Tarea eliminada correctamente'}
+    else:
+        return {'mensaje': 'Error al eliminar la tarea'}
+
+
+@app.route('/tareas/eliminar-finalizadas', methods=['DELETE'])
 def eliminar_finalizadas():
     tareas_ids = request.json
     tareas_ids = tareas_ids['tareasIds']
