@@ -22,6 +22,11 @@ import ListadoTareas from './components/ListadoTareas.vue';
 import FormularioAgregacion from './components/FormularioAgregacion.vue';
 import CategoriasTareas from './components/CategoriasTareas.vue';
 
+import { obtenerTareas, crearTarea } from "@/services/api";
+
+const tareas2 = await obtenerTareas();
+console.log("Tareas:", tareas2);
+
 import tareasData from './data/tareas';
 
 const tareas = ref(tareasData);
