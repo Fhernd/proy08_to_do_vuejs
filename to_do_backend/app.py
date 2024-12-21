@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, request
+from flask_cors import CORS
 
 from db.crud_todo import crear_tarea, eliminar_tarea, finalizar_tarea, obtener_tareas
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['SECRET_KEY'] = '@#@$MYSUPERSECRETKEY@#@$'
 
