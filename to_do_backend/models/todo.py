@@ -12,8 +12,8 @@ class Todo:
         - TareaTerminada: int -- Indica si la tarea está terminada
         - FechaModificacion: str -- Fecha de la última modificación
         """
-        self.ID = ID
-        self.Titulo = Titulo
-        self.FechaTarea = FechaTarea
-        self.TareaTerminada = TareaTerminada
-        self.FechaModificacion = FechaModificacion
+        self.id = ID
+        self.texto = Titulo
+        self.fechaHora = FechaTarea
+        self.completada = TareaTerminada
+        self.fechaModificacion = FechaModificacion
