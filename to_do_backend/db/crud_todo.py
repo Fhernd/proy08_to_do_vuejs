@@ -23,11 +23,17 @@ def crear_tarea(tarea):
         datos = (tarea['titulo'], fecha_tarea, tarea_terminada, fecha_modificacion)
         
         cursor.execute(sql, datos)
+
+        tarea_id = cursor.lastrowid
         
         conexion.commit()
         conexion.close()
         
-        return True
+        tarea['id'] = tarea_id
+        tarea['fecha_tarea'] = fecha_tarea
+        tarea['fecha_modificacion'] = fecha_modificacion
+        
+        return tarea
     except Exception as e:
         print(e)
         return False
