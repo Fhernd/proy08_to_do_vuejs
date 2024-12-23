@@ -30,7 +30,7 @@ export const obtenerTareas = async () => {
 export const crearTarea = async (tarea) => {
     try {
         const response = await apiClient.post("/tareas", tarea);
-        return response.data.mensaje;
+        return response.data;
     } catch (error) {
         console.error("Error al crear la tarea:", error);
         throw error;

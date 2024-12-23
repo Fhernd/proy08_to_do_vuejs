@@ -23,6 +23,7 @@ import FormularioAgregacion from './components/FormularioAgregacion.vue';
 import CategoriasTareas from './components/CategoriasTareas.vue';
 
 import { obtenerTareas } from "@/services/api";
+import { crearTarea } from './services/api';
 
 const tareas = ref([]);
 
@@ -38,8 +39,14 @@ onMounted(async () => {
 const categoriaActiva = ref('todas');
 
 const manejarTareaAgregada = (tarea) => {
-  tareas.value.push(tarea);
-  aplicarFiltro();
+  crearTarea(tarea)
+    .then((tareaCreada) => {
+      tareas.value = [...tareas.value, tareaCreada];
+      aplicarFiltro();
+    })
+    .catch((error) => {
+      console.error("Error al crear la tarea:", error);
+    });
 };
 
 const eliminarTarea = (id) => {
