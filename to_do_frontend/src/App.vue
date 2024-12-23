@@ -16,20 +16,25 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 import ListadoTareas from './components/ListadoTareas.vue';
 import FormularioAgregacion from './components/FormularioAgregacion.vue';
 import CategoriasTareas from './components/CategoriasTareas.vue';
 
-import { obtenerTareas, crearTarea } from "@/services/api";
+import { obtenerTareas } from "@/services/api";
 
-const tareas2 = await obtenerTareas();
-console.log("Tareas:", tareas2);
+const tareas = ref([]);
 
-import tareasData from './data/tareas';
+onMounted(async () => {
+  try {
+    const tareasObtenidas = await obtenerTareas();
+    tareas.value = tareasObtenidas;
+  } catch (error) {
+    console.error("Error al cargar las tareas:", error);
+  }
+});
 
-const tareas = ref(tareasData);
 const categoriaActiva = ref('todas');
 
 const manejarTareaAgregada = (tarea) => {
