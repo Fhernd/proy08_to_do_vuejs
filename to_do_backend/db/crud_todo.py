@@ -11,17 +11,19 @@ def crear_tarea(tarea):
     - tarea: str -- Descripción de la tarea
     """
     try:
+        print('ok0')
         conexion = crear_conexion()
         cursor = conexion.cursor()
         
-        tarea_terminada = 1 if tarea['terminada'] else 0
+        tarea_terminada = 1 if tarea['completada'] else 0
         fecha_tarea = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         fecha_modificacion = fecha_tarea
+        print('ok1')
         
         sql = 'INSERT INTO todo (Titulo, FechaTarea, TareaTerminada, FechaModificacion) VALUES (?, ?, ?, ?)'
         
-        datos = (tarea['titulo'], fecha_tarea, tarea_terminada, fecha_modificacion)
-        
+        datos = (tarea['texto'], fecha_tarea, tarea_terminada, fecha_modificacion)
+        print('datos', datos)
         cursor.execute(sql, datos)
 
         tarea_id = cursor.lastrowid
@@ -30,8 +32,8 @@ def crear_tarea(tarea):
         conexion.close()
         
         tarea['id'] = tarea_id
-        tarea['fecha_tarea'] = fecha_tarea
-        tarea['fecha_modificacion'] = fecha_modificacion
+        tarea['fechaTarea'] = fecha_tarea
+        tarea['fechaModificacion'] = fecha_modificacion
         
         return tarea
     except Exception as e:

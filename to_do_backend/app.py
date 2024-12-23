@@ -28,7 +28,7 @@ def guardar():
     resultado = crear_tarea(todo)
     
     if resultado:
-        return {'mensaje': 'Tarea almacenada correctamente'}
+        return {'tarea': resultado, 'mensaje': 'Tarea almacenada correctamente'}
     else:
         return {'mensaje': 'Error al almacenar la tarea'}
 
