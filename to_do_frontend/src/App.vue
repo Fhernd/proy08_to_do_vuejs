@@ -43,7 +43,7 @@ const categoriaActiva = ref('todas');
 const manejarTareaAgregada = (tarea) => {
   crearTarea(tarea)
     .then((tareaCreada) => {
-      tareas.value = [...tareas.value, tareaCreada];
+      tareas.value = [...tareas.value, tareaCreada.tarea];
       aplicarFiltro();
     })
     .catch((error) => {
