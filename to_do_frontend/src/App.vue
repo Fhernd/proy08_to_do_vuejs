@@ -11,7 +11,7 @@
 
     <div class="w-full md:w-2/3 lg:w-1/2 mt-52">
       <ListadoTareas :tareas="tareasFiltradas" @tarea-eliminar="eliminarTareaManejador"
-        @tarea-actualizada="actualizarEstadoTarea" />
+        @tarea-actualizada="actualizarEstadoTarea" :categoriaActiva="categoriaActiva" />
     </div>
   </div>
 </template>

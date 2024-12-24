@@ -14,6 +14,10 @@ const props = defineProps({
     tareas: {
         type: Array,
         required: true
+    },
+    categoriaActiva: {
+        type: String,
+        required: true
     }
 })
 
