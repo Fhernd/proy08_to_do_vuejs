@@ -10,7 +10,7 @@
     </div>
 
     <div class="w-full md:w-2/3 lg:w-1/2 mt-52">
-      <ListadoTareas :tareas="tareas" @tarea-eliminar="eliminarTarea" @tarea-actualizada="actualizarEstadoTarea" />
+      <ListadoTareas :tareas="tareasFiltradas" @tarea-eliminar="eliminarTarea" @tarea-actualizada="actualizarEstadoTarea" />
     </div>
   </div>
 </template>
@@ -26,10 +26,12 @@ import { obtenerTareas } from "@/services/api";
 import { crearTarea } from './services/api';
 
 const tareas = ref([]);
+const tareasFiltradas = ref([]);
 
 onMounted(async () => {
   try {
     const tareasObtenidas = await obtenerTareas();
+    tareasFiltradas.value = tareasObtenidas;
     tareas.value = tareasObtenidas;
   } catch (error) {
     console.error("Error al cargar las tareas:", error);
@@ -71,16 +73,16 @@ const actualizarEstadoTarea = (id) => {
 const aplicarFiltro = () => {
   switch (categoriaActiva.value) {
     case 'todas':
-      tareas.value = tareasData;
+      tareasFiltradas.value = tareas.value;
       break;
     case 'pendientes':
-      tareas.value = tareasData.filter((tarea) => !tarea.completada);
+      tareasFiltradas.value = tareas.value.filter((tarea) => !tarea.completada);
       break;
     case 'completadas':
-      tareas.value = tareasData.filter((tarea) => tarea.completada);
+      tareasFiltradas.value = tareas.value.filter((tarea) => tarea.completada);
       break;
     default:
-      tareas.value = tareasData;
+      tareasFiltradas.value = tareas.value;
   }
 };
 </script>

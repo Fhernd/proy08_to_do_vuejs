@@ -11,14 +11,12 @@ def crear_tarea(tarea):
     - tarea: str -- Descripción de la tarea
     """
     try:
-        print('ok0')
         conexion = crear_conexion()
         cursor = conexion.cursor()
         
         tarea_terminada = 1 if tarea['completada'] else 0
         fecha_tarea = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         fecha_modificacion = fecha_tarea
-        print('ok1')
         
         sql = 'INSERT INTO todo (Titulo, FechaTarea, TareaTerminada, FechaModificacion) VALUES (?, ?, ?, ?)'
         
