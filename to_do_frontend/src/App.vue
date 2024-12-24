@@ -10,7 +10,8 @@
     </div>
 
     <div class="w-full md:w-2/3 lg:w-1/2 mt-52">
-      <ListadoTareas :tareas="tareasFiltradas" @tarea-eliminar="eliminarTarea" @tarea-actualizada="actualizarEstadoTarea" />
+      <ListadoTareas :tareas="tareasFiltradas" @tarea-eliminar="eliminarTareaManejador"
+        @tarea-actualizada="actualizarEstadoTarea" />
     </div>
   </div>
 </template>
@@ -23,7 +24,7 @@ import FormularioAgregacion from './components/FormularioAgregacion.vue';
 import CategoriasTareas from './components/CategoriasTareas.vue';
 
 import { obtenerTareas } from "@/services/api";
-import { crearTarea } from './services/api';
+import { crearTarea, eliminarTarea } from './services/api';
 
 const tareas = ref([]);
 const tareasFiltradas = ref([]);
@@ -51,8 +52,15 @@ const manejarTareaAgregada = (tarea) => {
     });
 };
 
-const eliminarTarea = (id) => {
-  tareas.value = tareas.value.filter((tarea) => tarea.id !== id);
+const eliminarTareaManejador = (id) => {
+  eliminarTarea(id)
+    .then(() => {
+      tareas.value = tareas.value.filter((tarea) => tarea.id !== id);
+      aplicarFiltro();
+    })
+    .catch((error) => {
+      console.error("Error al eliminar la tarea:", error);
+    });
 };
 
 const filtrarTareas = (filtro) => {
