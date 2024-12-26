@@ -115,3 +115,33 @@ def finalizar_tarea(id_tarea, finalizada):
     except Exception as e:
         print(e)
         return False
+
+
+def buscar_tarea_por_id(id_tarea):
+    """
+    Busca una tarea en la base de datos dado su ID
+
+    - id_tarea: int -- ID de la tarea a buscar
+    
+    Returns: dict -- Tarea encontrada
+    """
+    try:
+        conexion = crear_conexion()
+        cursor = conexion.cursor()
+        
+        sql = 'SELECT * FROM todo WHERE ID = ?'
+        
+        cursor.execute(sql, (id_tarea,))
+        
+        tarea = cursor.fetchone()
+        
+        tarea = {'ID': tarea[0], 'Titulo': tarea[1], 'FechaTarea': tarea[2], 'TareaTerminada': tarea[3], 'FechaModificacion': tarea[4]}
+        
+        tarea = Todo(tarea['ID'], tarea['Titulo'], tarea['FechaTarea'], tarea['TareaTerminada'], tarea['FechaModificacion'])
+        
+        conexion.close()
+        
+        return tarea
+    except Exception as e:
+        print(e)
+        return None
