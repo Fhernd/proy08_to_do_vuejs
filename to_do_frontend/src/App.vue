@@ -95,7 +95,10 @@ const aplicarFiltro = () => {
 };
 
 const eliminarTareasCompletadas = () => {
-  eliminarTareasFinalizadas()
+  const tareasCompletadasIds = tareas.value
+    .filter((tarea) => tarea.completada)
+    .map((tarea) => tarea.id);
+  eliminarTareasFinalizadas(tareasCompletadasIds)
     .then(() => {
       const tareasPendientes = tareas.value.filter((tarea) => !tarea.completada);
       tareas.value = tareasPendientes;
