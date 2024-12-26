@@ -11,7 +11,8 @@
 
     <div class="w-full md:w-2/3 lg:w-1/2 mt-52">
       <ListadoTareas :tareas="tareasFiltradas" @tarea-eliminar="eliminarTareaManejador"
-        @tarea-actualizada="actualizarEstadoTarea" :categoriaActiva="categoriaActiva" @eliminar-tareas-completadas="eliminarTareasCompletadas"/>
+        @tarea-actualizada="actualizarEstadoTarea" :categoriaActiva="categoriaActiva"
+        @eliminar-tareas-completadas="eliminarTareasCompletadas" />
     </div>
   </div>
 </template>
@@ -23,8 +24,7 @@ import ListadoTareas from './components/ListadoTareas.vue';
 import FormularioAgregacion from './components/FormularioAgregacion.vue';
 import CategoriasTareas from './components/CategoriasTareas.vue';
 
-import { obtenerTareas } from "@/services/api";
-import { crearTarea, eliminarTarea } from './services/api';
+import { crearTarea, eliminarTarea, eliminarTareasFinalizadas, obtenerTareas } from './services/api';
 
 const tareas = ref([]);
 const tareasFiltradas = ref([]);
@@ -95,8 +95,14 @@ const aplicarFiltro = () => {
 };
 
 const eliminarTareasCompletadas = () => {
-  const tareasPendientes = tareas.value.filter((tarea) => !tarea.completada);
-  tareas.value = tareasPendientes;
-  aplicarFiltro();
+  eliminarTareasFinalizadas()
+    .then(() => {
+      const tareasPendientes = tareas.value.filter((tarea) => !tarea.completada);
+      tareas.value = tareasPendientes;
+      aplicarFiltro();
+    })
+    .catch((error) => {
+      console.error("Error al eliminar las tareas completadas:", error);
+    });
 };
 </script>
