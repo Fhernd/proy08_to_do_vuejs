@@ -92,7 +92,7 @@ def eliminar_tarea(id_tarea):
         return False
 
 
-def finalizar_tarea(id_tarea):
+def finalizar_tarea(id_tarea, finalizada):
     """
     Cambia el estado de una tarea en la base de datos
 
@@ -104,9 +104,9 @@ def finalizar_tarea(id_tarea):
         conexion = crear_conexion()
         cursor = conexion.cursor()
         
-        sql = 'UPDATE todo SET TareaTerminada = 1 WHERE ID = ?'
+        sql = 'UPDATE todo SET TareaTerminada = ? WHERE ID = ?'
         
-        cursor.execute(sql, (id_tarea,))
+        cursor.execute(sql, (finalizada, id_tarea))
         
         conexion.commit()
         conexion.close()
