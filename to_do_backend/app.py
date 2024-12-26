@@ -38,7 +38,7 @@ def modificar(id):
     tarea = buscar_tarea_por_id(id)
 
     if tarea:
-        resultado = finalizar_tarea(id, not tarea['TareaTerminada'])
+        resultado = finalizar_tarea(id, not tarea.completada)
         
         if resultado:
             return {'mensaje': 'Tarea finalizada correctamente'}
