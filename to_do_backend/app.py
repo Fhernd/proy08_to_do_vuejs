@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS
 
-from db.crud_todo import crear_tarea, eliminar_tarea, finalizar_tarea, obtener_tareas
+from db.crud_todo import buscar_tarea_por_id, crear_tarea, eliminar_tarea, finalizar_tarea, obtener_tareas
 
 app = Flask(__name__)
 CORS(app)
@@ -35,13 +35,17 @@ def guardar():
 
 @app.route('/tareas/<id>', methods=['PUT'])
 def modificar(id):
-    
-    resultado = finalizar_tarea(id)
-    
-    if resultado:
-        return {'mensaje': 'Tarea finalizada correctamente'}
+    tarea = buscar_tarea_por_id(id)
+
+    if tarea:
+        resultado = finalizar_tarea(id, not tarea['TareaTerminada'])
+        
+        if resultado:
+            return {'mensaje': 'Tarea finalizada correctamente'}
+        else:
+            return {'mensaje': 'Error al finalizar la tarea'}
     else:
-        return {'mensaje': 'Error al finalizar la tarea'}
+        return {'mensaje': 'Tarea no encontrada'}
 
 
 @app.route('/tareas/<id>', methods=['DELETE'])
