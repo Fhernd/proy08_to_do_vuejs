@@ -11,7 +11,7 @@
 
     <div class="w-full md:w-2/3 lg:w-1/2 mt-52">
       <ListadoTareas :tareas="tareasFiltradas" @tarea-eliminar="eliminarTareaManejador"
-        @tarea-actualizada="actualizarEstadoTarea" :categoriaActiva="categoriaActiva" />
+        @tarea-actualizada="actualizarEstadoTarea" :categoriaActiva="categoriaActiva" @eliminar-tareas-completadas="eliminarTareasCompletadas"/>
     </div>
   </div>
 </template>
@@ -92,5 +92,11 @@ const aplicarFiltro = () => {
     default:
       tareasFiltradas.value = tareas.value;
   }
+};
+
+const eliminarTareasCompletadas = () => {
+  const tareasPendientes = tareas.value.filter((tarea) => !tarea.completada);
+  tareas.value = tareasPendientes;
+  aplicarFiltro();
 };
 </script>
