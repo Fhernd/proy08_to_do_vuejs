@@ -10,6 +10,9 @@ app.config['SECRET_KEY'] = '@#@$MYSUPERSECRETKEY@#@$'
 
 @app.route('/')
 def index():
+    """
+    Página de inicio de la API.
+    """
     return {
         'mensaje': 'Bienvenido a la API de tareas'
     }
@@ -17,12 +20,22 @@ def index():
 
 @app.route('/tareas', methods=['GET'])
 def todas():
+    """
+    Obtiene todas las tareas.
+
+    Returns: dict -- Lista de tareas
+    """
     tareas = obtener_tareas()
     return {'tareas': [tarea.__dict__ for tarea in tareas]}
 
 
 @app.route('/tareas', methods=['POST'])
 def guardar():
+    """
+    Almacena una nueva tarea.
+
+    Returns: dict -- Mensaje de confirmación
+    """
     todo = request.json
     
     resultado = crear_tarea(todo)
@@ -35,6 +48,14 @@ def guardar():
 
 @app.route('/tareas/<id>', methods=['PUT'])
 def modificar(id):
+    """
+    Modifica una tarea dado su ID.
+
+    Arguments:
+    - id: int -- ID de la tarea a modificar
+
+    Returns: dict -- Mensaje de confirmación
+    """
     tarea = buscar_tarea_por_id(id)
 
     if tarea:
@@ -50,6 +71,14 @@ def modificar(id):
 
 @app.route('/tareas/<id>', methods=['DELETE'])
 def eliminar(id):
+    """
+    Elimina una tarea dado su ID.
+
+    Arguments:
+    - id: int -- ID de la tarea a eliminar
+
+    Returns: dict -- Mensaje de confirmación
+    """
     resultado = eliminar_tarea(id)
     
     if resultado:
@@ -60,6 +89,11 @@ def eliminar(id):
 
 @app.route('/tareas/eliminar-finalizadas', methods=['DELETE'])
 def eliminar_finalizadas():
+    """
+    Elimina las tareas finalizadas.
+
+    Returns: dict -- Mensaje de confirmación
+    """
     tareas_ids = request.json
     tareas_ids = tareas_ids['tareasIds']
     
