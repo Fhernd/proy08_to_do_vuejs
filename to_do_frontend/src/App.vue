@@ -24,7 +24,7 @@ import ListadoTareas from './components/ListadoTareas.vue';
 import FormularioAgregacion from './components/FormularioAgregacion.vue';
 import CategoriasTareas from './components/CategoriasTareas.vue';
 
-import { crearTarea, eliminarTarea, eliminarTareasFinalizadas, obtenerTareas } from './services/api';
+import { crearTarea, eliminarTarea, eliminarTareasFinalizadas, finalizarTarea, obtenerTareas } from './services/api';
 
 const tareas = ref([]);
 const tareasFiltradas = ref([]);
@@ -69,13 +69,20 @@ const filtrarTareas = (filtro) => {
 };
 
 const actualizarEstadoTarea = (id) => {
-  tareas.value = tareas.value.map((tarea) => {
-    if (tarea.id === id) {
-      tarea.completada = !tarea.completada;
-    }
-    return tarea;
-  });
-  aplicarFiltro();
+  const tareaActualizada = tareas.value.find((tarea) => tarea.id === id);
+  finalizarTarea(id, !tareaActualizada.completada)
+    .then(() => {
+      tareas.value = tareas.value.map((tarea) => {
+        if (tarea.id === id) {
+          tarea.completada = !tarea.completada;
+        }
+        return tarea;
+      });
+      aplicarFiltro();
+    })
+    .catch((error) => {
+      console.error("Error al actualizar el estado de la tarea:", error);
+    });
 };
 
 const aplicarFiltro = () => {
