@@ -46,7 +46,7 @@ def guardar():
         return {'mensaje': 'Error al almacenar la tarea'}
 
 
-@app.route('/tareas/<id>', methods=['PUT'])
+@app.route('/tareas/finalizar/<id>', methods=['PUT'])
 def modificar(id):
     """
     Modifica una tarea dado su ID.
@@ -104,3 +104,23 @@ def eliminar_finalizadas():
         return {'mensaje': 'Tareas eliminadas correctamente'}
     else:
         return {'mensaje': 'Error al eliminar las tareas'}
+
+
+@app.route('/tareas/<id>', methods=['PUT'])
+def editar(id):
+    """
+    Edita una tarea dado su ID.
+
+    Arguments:
+    - id: int -- ID de la tarea a editar
+
+    Returns: dict -- Mensaje de confirmación
+    """
+    todo = request.json
+    
+    resultado = editar_tarea(id, todo)
+    
+    if resultado:
+        return {'mensaje': 'Tarea editada correctamente'}
+    else:
+        return {'mensaje': 'Error al editar la tarea'}
