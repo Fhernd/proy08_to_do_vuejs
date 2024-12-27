@@ -12,7 +12,7 @@
     <div class="w-full md:w-2/3 lg:w-1/2 mt-52">
       <ListadoTareas :tareas="tareasFiltradas" @tarea-eliminar="eliminarTareaManejador"
         @tarea-actualizada="actualizarEstadoTarea" :categoriaActiva="categoriaActiva"
-        @eliminar-tareas-completadas="eliminarTareasCompletadas" />
+        @eliminar-tareas-completadas="eliminarTareasCompletadas" @tarea-editar="tareaEditar" />
     </div>
   </div>
 </template>
@@ -114,5 +114,11 @@ const eliminarTareasCompletadas = () => {
     .catch((error) => {
       console.error("Error al eliminar las tareas completadas:", error);
     });
+};
+
+const tareaEditar = (tarea) => {
+  const tareaEditada = tareas.value.find((t) => t.id === tarea.id);
+  tareaEditada.texto = tarea.texto;
+  aplicarFiltro();
 };
 </script>
