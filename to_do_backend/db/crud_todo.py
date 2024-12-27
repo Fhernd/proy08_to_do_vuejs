@@ -145,3 +145,31 @@ def buscar_tarea_por_id(id_tarea):
     except Exception as e:
         print(e)
         return None
+
+
+def editar_tarea(id_tarea, tarea):
+    """
+    Edita una tarea en la base de datos
+
+    - id_tarea: int -- ID de la tarea a editar
+    - tarea: dict -- Datos de la tarea a editar
+    
+    Returns: bool -- True si la tarea fue editada, False en caso contrario
+    """
+    try:
+        conexion = crear_conexion()
+        cursor = conexion.cursor()
+        
+        sql = 'UPDATE todo SET Titulo = ?, FechaModificacion = ? WHERE ID = ?'
+
+        fecha_modificacion = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        cursor.execute(sql, (tarea['texto'], fecha_modificacion, id_tarea))
+
+        conexion.commit()
+        conexion.close()
+
+        return True
+    except Exception as e:
+        print(e)
+        return False
