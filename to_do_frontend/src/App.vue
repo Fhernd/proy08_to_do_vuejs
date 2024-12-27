@@ -117,7 +117,7 @@ const eliminarTareasCompletadas = () => {
 };
 
 const tareaEditar = (tarea) => {
-  editarTarea(tarea.id, tarea)
+  editarTarea(tarea)
     .then(() => {
       const tareaEditada = tareas.value.find((t) => t.id === tarea.id);
       tareaEditada.texto = tarea.texto;
