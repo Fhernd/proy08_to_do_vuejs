@@ -7,14 +7,15 @@
             </button>
         </div>
         <div v-for="tarea in tareas" :key="tarea.id">
-            <Tarea :tarea="tarea" @tarea-eliminar="eliminarTarea" @tarea-toggle="completarTarea" />
+            <Tarea :tarea="tarea" @tarea-eliminar="eliminarTarea" @tarea-toggle="completarTarea"
+                @tarea-editar="tareaEditar" />
         </div>
     </div>
 </template>
 
 <script setup>
 import Tarea from './Tarea.vue';
-const emit = defineEmits(['tarea-eliminar', 'tarea-actualizada', 'eliminar-tareas-completadas']);
+const emit = defineEmits(['tarea-eliminar', 'tarea-actualizada', 'eliminar-tareas-completadas', 'tarea-editar']);
 
 const props = defineProps({
     tareas: {
@@ -38,6 +39,10 @@ const eliminarTarea = (id) => {
 const eliminarTareasCompletadas = () => {
     emit('eliminar-tareas-completadas');
 };
+
+const tareaEditar = (tarea) => {
+    emit('tarea-editar', tarea);
+}
 </script>
 
 <style scoped></style>
