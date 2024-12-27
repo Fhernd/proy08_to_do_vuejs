@@ -24,7 +24,7 @@ import ListadoTareas from './components/ListadoTareas.vue';
 import FormularioAgregacion from './components/FormularioAgregacion.vue';
 import CategoriasTareas from './components/CategoriasTareas.vue';
 
-import { crearTarea, eliminarTarea, eliminarTareasFinalizadas, finalizarTarea, obtenerTareas } from './services/api';
+import { crearTarea, editarTarea, eliminarTarea, eliminarTareasFinalizadas, finalizarTarea, obtenerTareas } from './services/api';
 
 const tareas = ref([]);
 const tareasFiltradas = ref([]);
@@ -117,8 +117,14 @@ const eliminarTareasCompletadas = () => {
 };
 
 const tareaEditar = (tarea) => {
-  const tareaEditada = tareas.value.find((t) => t.id === tarea.id);
-  tareaEditada.texto = tarea.texto;
-  aplicarFiltro();
+  editarTarea(tarea.id, tarea)
+    .then(() => {
+      const tareaEditada = tareas.value.find((t) => t.id === tarea.id);
+      tareaEditada.texto = tarea.texto;
+      aplicarFiltro();
+    })
+    .catch((error) => {
+      console.error("Error al editar la tarea:", error);
+    });
 };
 </script>
