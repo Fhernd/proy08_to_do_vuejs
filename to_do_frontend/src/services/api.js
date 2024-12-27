@@ -44,7 +44,7 @@ export const crearTarea = async (tarea) => {
  */
 export const finalizarTarea = async (id) => {
     try {
-        const response = await apiClient.put(`/tareas/${id}`);
+        const response = await apiClient.put(`/tareas/finalizar/${id}`);
         return response.data.mensaje;
     } catch (error) {
         console.error("Error al finalizar la tarea:", error);
@@ -84,10 +84,26 @@ export const eliminarTareasFinalizadas = async (tareasIds) => {
     }
 };
 
+/**
+ * Edita el texto de una tarea.
+ * @param {Object} tarea Datos de la tarea
+ * @returns {Promise} Mensaje de éxito o error
+ */
+export const editarTarea = async (tarea) => {
+    try {
+        const response = await apiClient.put(`/tareas/${tarea.id}`, tarea);
+        return response.data.mensaje;
+    } catch (error) {
+        console.error("Error al editar la tarea:", error);
+        throw error;
+    }
+}
+
 export default {
     obtenerTareas,
     crearTarea,
     finalizarTarea,
     eliminarTarea,
     eliminarTareasFinalizadas,
+    editarTarea,
 };
