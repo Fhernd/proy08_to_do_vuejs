@@ -27,7 +27,7 @@
   <div v-if="modalAbierto" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
     <div class="bg-white rounded-lg shadow-lg p-6 w-11/12 max-w-md">
       <h2 class="text-xl font-semibold text-gray-700 mb-4">Editar Tarea</h2>
-      <input v-model="textoEditado" type="text"
+      <input ref="inputField" v-model="textoEditado" type="text"
         class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring focus:border-blue-500"
         placeholder="Ingrese el nuevo texto de la tarea" />
 
@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, nextTick } from 'vue';
 
 const emit = defineEmits(['tarea-eliminar', 'tarea-toggle', 'tarea-editar']);
 
@@ -59,10 +59,16 @@ const props = defineProps({
 
 const modalAbierto = ref(false);
 const textoEditado = ref('');
+const inputField = ref(null); // Referencia al campo de texto
 
 const abrirModal = () => {
   textoEditado.value = props.tarea.texto; // Inicializa el texto del modal con el texto actual de la tarea
   modalAbierto.value = true;
+
+  // Asegura que el DOM esté renderizado antes de enfocar el campo de texto
+  nextTick(() => {
+    inputField.value.focus();
+  });
 };
 
 const cerrarModal = () => {
