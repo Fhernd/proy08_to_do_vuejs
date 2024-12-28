@@ -35,8 +35,6 @@ const agregarTarea = () => {
 </script>
 
 <style scoped>
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
-
 input {
     width: 100%;
     padding: 10px;
