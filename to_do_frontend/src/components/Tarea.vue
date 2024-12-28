@@ -12,13 +12,13 @@
       <!-- Botón para editar la tarea -->
       <button @click="abrirModal"
         class="px-3 py-2 bg-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-600 transition duration-200 ease-in-out">
-        Editar
+        <i class="fas fa-edit"></i>
       </button>
 
       <!-- Botón para eliminar la tarea -->
       <button @click="eliminarTarea"
         class="px-3 py-2 bg-red-500 text-white text-sm font-semibold rounded-lg hover:bg-red-600 transition duration-200 ease-in-out">
-        Eliminar
+        <i class="fas fa-trash"></i>
       </button>
     </div>
   </div>
