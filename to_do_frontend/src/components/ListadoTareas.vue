@@ -2,7 +2,9 @@
     <div>
         <div class="flex justify-center items-center">
             <button v-if="categoriaActiva === 'completadas'" @click="eliminarTareasCompletadas"
-                class="bg-red-500 text-white px-4 py-2 rounded-lg mb-4">
+                class="bg-red-500 text-white px-4 py-2 rounded-lg mb-4 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                :disabled="tareas.length === 0"
+                >
                 Eliminar tareas finalizadas
             </button>
         </div>
