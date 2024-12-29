@@ -3,19 +3,19 @@
         <button @click="filtrarTareas('todas')" class="px-4 py-2 rounded transition" :class="filtroActivo === 'todas'
             ? 'bg-blue-500 text-white hover:bg-blue-600'
             : 'bg-gray-200 text-gray-700 hover:bg-gray-300'">
-            Todas las tareas
+            Todas las tareas ({{ cantidadTareas }})
         </button>
 
         <button @click="filtrarTareas('pendientes')" class="px-4 py-2 rounded transition" :class="filtroActivo === 'pendientes'
             ? 'bg-yellow-500 text-white hover:bg-yellow-600'
             : 'bg-gray-200 text-gray-700 hover:bg-gray-300'">
-            Pendientes
+            Pendientes ({{ cantidadTareasPendientes }})
         </button>
 
         <button @click="filtrarTareas('completadas')" class="px-4 py-2 rounded transition" :class="filtroActivo === 'completadas'
             ? 'bg-green-500 text-white hover:bg-green-600'
             : 'bg-gray-200 text-gray-700 hover:bg-gray-300'">
-            Finalizadas
+            Finalizadas ({{ cantidadTareasCompletadas }})
         </button>
     </div>
 </template>
@@ -31,11 +31,11 @@ const props = defineProps({
         type: Number,
         required: true
     },
-    cantidadPendientes: {
+    cantidadTareasPendientes: {
         type: Number,
         required: true
     },
-    cantidadCompletadas: {
+    cantidadTareasCompletadas: {
         type: Number,
         required: true
     }

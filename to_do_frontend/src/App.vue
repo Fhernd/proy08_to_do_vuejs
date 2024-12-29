@@ -6,7 +6,7 @@
         LISTA DE TAREAS
       </h1>
       <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
-      <CategoriasTareas @tareas-filtrar="filtrarTareas" :filtroActivo="categoriaActiva" />
+      <CategoriasTareas @tareas-filtrar="filtrarTareas" :filtroActivo="categoriaActiva" :cantidadTareas="tareas.length" :cantidadTareasPendientes="tareas.filter(e => !e.completada).length" :cantidadTareasCompletadas="tareas.filter(e => e.completada).length" />
     </div>
 
     <div class="w-full md:w-2/3 lg:w-1/2 mt-52">
