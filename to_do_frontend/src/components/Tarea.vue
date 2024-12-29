@@ -27,7 +27,7 @@
   <div v-if="modalAbierto" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
     <div class="bg-white rounded-lg shadow-lg p-6 w-11/12 max-w-md">
       <h2 class="text-xl font-semibold text-gray-700 mb-4">Editar Tarea</h2>
-      <input ref="inputField" v-model="textoEditado" type="text"
+      <input ref="inputField" v-model="textoEditado" type="text" @keyup.enter="guardarCambios"
         class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring focus:border-blue-500"
         placeholder="Ingrese el nuevo texto de la tarea" />
 
@@ -36,7 +36,7 @@
           class="px-4 py-2 bg-gray-500 text-white text-sm font-semibold rounded-lg hover:bg-gray-600 transition duration-200 ease-in-out">
           Cancelar
         </button>
-        <button @click="guardarCambios" @keyup.enter="guardarCambios"
+        <button @click="guardarCambios"
           class="px-4 py-2 bg-blue-500 text-white text-sm font-semibold rounded-lg hover:bg-blue-600 transition duration-200 ease-in-out">
           Guardar
         </button>
