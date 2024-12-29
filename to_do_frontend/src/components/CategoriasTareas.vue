@@ -26,6 +26,18 @@ const props = defineProps({
     filtroActivo: {
         type: String,
         required: true
+    },
+    cantidadTareas: {
+        type: Number,
+        required: true
+    },
+    cantidadPendientes: {
+        type: Number,
+        required: true
+    },
+    cantidadCompletadas: {
+        type: Number,
+        required: true
     }
 });
 
