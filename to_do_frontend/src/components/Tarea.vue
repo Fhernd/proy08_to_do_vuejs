@@ -36,7 +36,7 @@
           class="px-4 py-2 bg-gray-500 text-white text-sm font-semibold rounded-lg hover:bg-gray-600 transition duration-200 ease-in-out">
           Cancelar
         </button>
-        <button @click="guardarCambios"
+        <button @click="guardarCambios" @keyup.enter="guardarCambios"
           class="px-4 py-2 bg-blue-500 text-white text-sm font-semibold rounded-lg hover:bg-blue-600 transition duration-200 ease-in-out">
           Guardar
         </button>
