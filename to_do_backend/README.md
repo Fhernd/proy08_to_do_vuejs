@@ -205,7 +205,7 @@ Esta API permite realizar operaciones básicas para la gestión de tareas a real
 ---
 
 ### **5. Marcar una tarea como finalizada**
-- **URL:** `/tareas/<id>`
+- **URL:** `/tareas/finalizar/<id>`
 - **Método:** `PUT`
 - **Descripción:** Marca una tarea como finalizada por su ID.
 - **Parámetro de la URL:**
@@ -250,6 +250,31 @@ Esta API permite realizar operaciones básicas para la gestión de tareas a real
     }
     ```
 
+### **7. Editar una tarea
+- **URL:** `/tareas/{id}`
+- **Método:** `PUT`
+- **Descripción:** Edita una tarea específica proporcionada por su ID.
+- **Cuerpo de la solicitud (JSON):**
+  ```json
+  {
+    "titulo": "Nuevo título de la tarea",
+    "descripcion": "Nueva descripción de la tarea",
+    "completada": false
+  }
+  ```
+- **Respuesta:**
+  - **Éxito:**
+    ```json
+    {
+      "mensaje": "Tarea editada correctamente"
+    }
+    ```
+  - **Error:**
+    ```json
+    {
+      "mensaje": "Error al editar la tarea"
+    }
+    ```
 ---
 
 # 5. Autor
