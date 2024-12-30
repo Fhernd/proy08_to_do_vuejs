@@ -1,6 +1,6 @@
-# 1. PROYECTO 6 - Aplicación Web para Tareas por Realizar (ToDo)
+# 1. PROYECTO 8 - API Web para Tareas por Realizar (ToDo)
 
-Esta es una **aplicación web para gestionar notas y tareas pendientes** desarrollada con **Flask**, un microframework de Python. Permite a los usuarios realizar operaciones CRUD (crear, leer, actualizar y eliminar) a través de una API. Esta API se encarga de gestionar los datos de las tareas.
+Esta es una **API web para gestionar notas y tareas pendientes** desarrollada con **Flask**, un microframework de Python. Permite a los usuarios realizar operaciones CRUD (crear, leer, actualizar y eliminar) a través de una API. Esta API se encarga de gestionar los datos de las tareas.
 
 ---
 
