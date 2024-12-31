@@ -9,13 +9,11 @@
     </div>
 
     <div class="flex items-center space-x-2">
-      <!-- Botón para editar la tarea -->
       <button @click="abrirModal"
         class="px-3 py-2 bg-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-600 transition duration-200 ease-in-out">
         <i class="fas fa-edit"></i>
       </button>
 
-      <!-- Botón para eliminar la tarea -->
       <button @click="eliminarTarea"
         class="px-3 py-2 bg-red-500 text-white text-sm font-semibold rounded-lg hover:bg-red-600 transition duration-200 ease-in-out">
         <i class="fas fa-trash"></i>
@@ -59,13 +57,12 @@ const props = defineProps({
 
 const modalAbierto = ref(false);
 const textoEditado = ref('');
-const inputField = ref(null); // Referencia al campo de texto
+const inputField = ref(null);
 
 const abrirModal = () => {
-  textoEditado.value = props.tarea.texto; // Inicializa el texto del modal con el texto actual de la tarea
+  textoEditado.value = props.tarea.texto;
   modalAbierto.value = true;
 
-  // Asegura que el DOM esté renderizado antes de enfocar el campo de texto
   nextTick(() => {
     inputField.value.focus();
   });
