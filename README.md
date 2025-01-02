@@ -57,4 +57,4 @@ El frontend estará disponible en: [http://localhost:5173](http://localhost:5173
 
 ## Autor
 
-Creado por John Ortiz Ordoñez - johnortizo@outlook.com
+Creado por Ingeniero John Ortiz Ordoñez - johnortizo@outlook.com

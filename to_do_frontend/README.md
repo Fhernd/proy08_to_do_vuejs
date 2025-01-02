@@ -107,6 +107,6 @@ npm run dev
 
 ## Autor
 
-Creado por John Ortiz Ordoñez - johnortizo@outlook.com
+Creado por Ingeniero John Ortiz Ordoñez - johnortizo@outlook.com
 
 **Repositorio en GitHub:** [Enlace al repositorio](https://github.com/Fhernd/proy08_to_do_vuejs)

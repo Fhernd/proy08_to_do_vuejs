@@ -279,5 +279,6 @@ Esta API permite realizar operaciones básicas para la gestión de tareas a real
 
 # 5. Autor
 
-Creado por John Ortiz Ordoñez - johnortizo@outlook.com
+Creado por ingeniero John Ortiz Ordoñez - johnortizo@outlook.com
+
 **Repositorio en GitHub:** [Enlace al repositorio](https://github.com/Fhernd/proyecto8_to_do)
