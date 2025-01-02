@@ -20,14 +20,17 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 
+import { useToast } from "vue-toastification";
+
 import ListadoTareas from './components/ListadoTareas.vue';
 import FormularioAgregacion from './components/FormularioAgregacion.vue';
 import CategoriasTareas from './components/CategoriasTareas.vue';
-
 import { crearTarea, editarTarea, eliminarTarea, eliminarTareasFinalizadas, finalizarTarea, obtenerTareas } from './services/api';
 
 const tareas = ref([]);
 const tareasFiltradas = ref([]);
+
+const toast = useToast();
 
 onMounted(async () => {
   try {
@@ -46,6 +49,10 @@ const manejarTareaAgregada = (tarea) => {
     .then((tareaCreada) => {
       tareas.value = [...tareas.value, tareaCreada.tarea];
       aplicarFiltro();
+
+      toast.success('Tarea agregada satisfactoriamente', {
+        timeout: 2000
+      });
     })
     .catch((error) => {
       console.error("Error al crear la tarea:", error);
