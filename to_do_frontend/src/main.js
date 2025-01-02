@@ -8,6 +8,7 @@ import "vue-toastification/dist/index.css";
 const options = {
 }
 
-App.use(Toast, options);
+const app = createApp(App)
+app.use(Toast, options)
 
-createApp(App).mount('#app')
+app.mount('#app')
