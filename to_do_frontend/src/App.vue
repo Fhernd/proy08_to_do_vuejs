@@ -38,7 +38,9 @@ onMounted(async () => {
     tareasFiltradas.value = tareasObtenidas;
     tareas.value = tareasObtenidas;
   } catch (error) {
-    console.error("Error al cargar las tareas:", error);
+    toast.warning('No se pudieron obtener las tareas', {
+      timeout: 2000,
+    });
   }
 });
 
@@ -51,11 +53,13 @@ const manejarTareaAgregada = (tarea) => {
       aplicarFiltro();
 
       toast.success('Tarea agregada satisfactoriamente', {
-        timeout: 2000
+        timeout: 1500,
       });
     })
     .catch((error) => {
-      console.error("Error al crear la tarea:", error);
+      toast.warning('No se pudo agregar la tarea', {
+        timeout: 1500,
+      });
     });
 };
 
@@ -64,9 +68,15 @@ const eliminarTareaManejador = (id) => {
     .then(() => {
       tareas.value = tareas.value.filter((tarea) => tarea.id !== id);
       aplicarFiltro();
+
+      toast.success('Tarea eliminada satisfactoriamente', {
+        timeout: 1500,
+      });
     })
     .catch((error) => {
-      console.error("Error al eliminar la tarea:", error);
+      toast.warning('No se pudo eliminar la tarea', {
+        timeout: 1500,
+      });
     });
 };
 
@@ -86,9 +96,15 @@ const actualizarEstadoTarea = (id) => {
         return tarea;
       });
       aplicarFiltro();
+
+      toast.success('Estado de la tarea actualizado satisfactoriamente', {
+        timeout: 1500,
+      });
     })
     .catch((error) => {
-      console.error("Error al actualizar el estado de la tarea:", error);
+      toast.warning('No se pudo actualizar el estado de la tarea', {
+        timeout: 1500,
+      });
     });
 };
 
@@ -117,9 +133,15 @@ const eliminarTareasCompletadas = () => {
       const tareasPendientes = tareas.value.filter((tarea) => !tarea.completada);
       tareas.value = tareasPendientes;
       aplicarFiltro();
+
+      toast.success('Tareas completadas eliminadas satisfactoriamente', {
+        timeout: 1500,
+      });
     })
     .catch((error) => {
-      console.error("Error al eliminar las tareas completadas:", error);
+      toast.warning('No se pudieron eliminar las tareas completadas', {
+        timeout: 1500,
+      });
     });
 };
 
@@ -129,9 +151,15 @@ const tareaEditar = (tarea) => {
       const tareaEditada = tareas.value.find((t) => t.id === tarea.id);
       tareaEditada.texto = tarea.texto;
       aplicarFiltro();
+
+      toast.success('Tarea editada satisfactoriamente', {
+        timeout: 1500,
+      });
     })
     .catch((error) => {
-      console.error("Error al editar la tarea:", error);
+      toast.warning('No se pudo editar la tarea', {
+        timeout: 1500,
+      });
     });
 };
 </script>
