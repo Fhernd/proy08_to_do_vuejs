@@ -2,14 +2,14 @@
   <div class="flex flex-col items-center min-h-screen">
     <div class="w-full md:w-2/3 lg:w-1/2 text-center fixed top-0 bg-white z-10 shadow-md">
       <h1
-        class="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 drop-shadow-md">
+        class="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 drop-shadow-md mt-5">
         LISTA DE TAREAS
       </h1>
       <FormularioAgregacion @tarea-agregada="manejarTareaAgregada" />
       <CategoriasTareas @tareas-filtrar="filtrarTareas" :filtroActivo="categoriaActiva" :cantidadTareas="tareas.length" :cantidadTareasPendientes="tareas.filter(e => !e.completada).length" :cantidadTareasCompletadas="tareas.filter(e => e.completada).length" />
     </div>
 
-    <div class="w-full md:w-2/3 lg:w-1/2 mt-52">
+    <div class="w-full md:w-2/3 lg:w-1/2 mt-60">
       <ListadoTareas :tareas="tareasFiltradas" @tarea-eliminar="eliminarTareaManejador"
         @tarea-actualizada="actualizarEstadoTarea" :categoriaActiva="categoriaActiva"
         @eliminar-tareas-completadas="eliminarTareasCompletadas" @tarea-editar="tareaEditar" />
